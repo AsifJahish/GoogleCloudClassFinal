@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ event.title }}</h1>
+    <p>{{ event.description }}</p>
+    <p>Date and Time: {{ event.date_time }}</p>
+    <p>Location: {{ event.location }}</p>
+
+    <h3>Registrations</h3>
+    <ul>
+        {% for registration in registrations %}
+            <li>{{ registration.user.username }}: {{ registration.ticket_type }} - {{ registration.number_of_tickets }} tickets</li>
+        {% empty %}
+            <p>No registrations yet.</p>
+        {% endfor %}
+    </ul>
+
+    <h3>Reviews</h3>
+    <ul>
+        {% for review in reviews %}
+            <li>{{ review.user.username }}: {{ review.rating }} stars - {{ review.comment }}</li>
+        {% empty %}
+            <p>No reviews yet.</p>
+        {% endfor %}
+    </ul>
+
+    <h3>Tickets</h3>
+    <ul>
+        {% for ticket in tickets %}
+            <li>{{ ticket.type }} - ${{ ticket.price }} ({{ ticket.availability }} available)</li>
+        {% empty %}
+            <p>No tickets available.</p>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'register_for_event' event.pk %}" class="btn btn-primary">Register</a>
+    <a href="{% url 'add_review' event.pk %}" class="btn btn-secondary">Add Review</a>
+</div>
+{% endblock %}

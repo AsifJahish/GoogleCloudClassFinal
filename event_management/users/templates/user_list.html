@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}User List{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+    <h1>User List</h1>
+    <a href="{% url 'user_create' %}" class="btn btn-primary mb-3">Create New User</a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>
+                        <a href="{% url 'user_update' user.id %}" class="btn btn-warning btn-sm">Edit</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">No users found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

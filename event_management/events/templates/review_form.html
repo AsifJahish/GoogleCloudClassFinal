@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Add Review for Event{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Add a Review</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="id_event">Select Event</label>
+            {{ form.event }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+        <a href="{% url 'event_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+    
+    <h3>Available Events</h3>
+    <ul>
+        {% for event in events %}
+            <li>{{ event.title }} - <a href="{% url 'event_detail' pk=event.pk %}">View Details</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

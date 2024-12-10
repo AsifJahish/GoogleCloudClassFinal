@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+    {% if form.instance.id %}
+        Edit User
+    {% else %}
+        Create New User
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>
+        {% if form.instance.id %}
+            Edit User
+        {% else %}
+            Create New User
+        {% endif %}
+    </h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-success">
+            {% if form.instance.id %}Update{% else %}Save{% endif %}
+        </button>
+        <a href="{% url 'user_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

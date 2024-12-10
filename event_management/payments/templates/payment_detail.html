@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Detail{% endblock %}
+
+{% block content %}
+<h1>Payment Detail</h1>
+<p><strong>Registration:</strong> {{ payment.registration }}</p>
+<p><strong>Amount:</strong> {{ payment.amount }}</p>
+<p><strong>Status:</strong> {{ payment.get_status_display }}</p>
+<p><strong>Payment Date:</strong> {{ payment.payment_date }}</p>
+<a href="{% url 'payment_list' %}" class="btn btn-secondary">Back to Payments</a>
+{% endblock %}
