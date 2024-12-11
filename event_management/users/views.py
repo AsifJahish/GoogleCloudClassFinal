@@ -65,3 +65,14 @@ def notification_delete(request, pk):
     if request.method == 'POST':
         notification.delete()
         return redirect('notification_list')
+# views.py
+# from django.http import JsonResponse
+# from .pubsub import publish_message
+
+# def create_event(request):
+#     # Event creation logic goes here
+
+#     # Send a simple notification after creating an event
+#     publish_message('my-notification-topic', 'New event created!')
+
+#     return JsonResponse({"message": "Event created and notification sent!"})

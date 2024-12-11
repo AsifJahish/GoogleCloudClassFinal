@@ -1,0 +1,33 @@
+openapi: "3.0.0"
+info:
+  title: Simple Event API
+  description: A simple API to list events.
+  version: "1.0.0"
+servers:
+  - url: "https://event-dot-dotted-marking-444412-s5.uc.r.appspot.com/events/"
+paths:
+  /events:
+    get:
+      summary: Get list of events
+      operationId: listEvents
+      responses:
+        "200":
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    date_time:
+                      type: string
+                      format: date-time
+                    location:
+                      type: string

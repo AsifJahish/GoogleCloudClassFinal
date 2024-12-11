@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/asifjahish/Desktop/midterm/final_googleCloud/myvenv
+set -gx VIRTUAL_ENV /home/asifjahish/Desktop/midterm/final_googleCloud/GoogleCloudClassFinal/myvenv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-4fuyz!+#gm7p(hcb@h(3%347pm$g$!_cgn(1y4ca+5h1n4v0lp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,12 +76,24 @@ WSGI_APPLICATION = 'event_management.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'HOST': '/cloudsql/dotted-marking-444412-s5:us-central1:finalgooglecloud',
+         'PORT' : '3306',
+         'USER': 'root',
+         'PASSWORD': 'Kabul@2020',
+         'NAME': 'event_db',
+     }
+   }
 
 
 # Password validation
@@ -125,6 +137,12 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",  # Adjust path as per your project structure
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Or adjust the path to where static files are stored
+]
+
 
 
 # Default primary key field type
